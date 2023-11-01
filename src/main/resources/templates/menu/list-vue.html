@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+<head>
+	<meta id="csrf" name="_csrf" th:content="${_csrf.token}">
+	<meta name="_key" th:content="${_csrf.headerName}">
+	<link href="/css/components/menu/card.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/menu/menu-filter.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/menu/basket-status.css" rel="stylesheet" type="text/css">    
+    <link href="/css/components/menu/list.css" rel="stylesheet" type="text/css">
+	<!--<script src="/js/menu/list-dom.js"></script>-->
+	<script type="module" src="/js/menu/list-vue.js" defer></script>
+</head>
+
+<body>
+	<main layout:fragment="main" id="main">
+        <section class="menu-list">
+            <h1 class="d:none">메뉴 검색 목록</h1>
+            <div>
+                <!--menu-filter 영역-->
+                <div>
+                <menu-filter />
+                </div>
+				<div>
+				<!--menu-card-list 영역-->
+				<menu-list />
+                </div>
+            </div>
+        </section>
+        <section class="basket-status">
+	        <h1 class="d:none">Basket Bar</h1>
+	        <dl class="ph:3">
+	            <dt>금액</dt>
+	            <dd class="ml:2">5,000원</dd>
+	            <dt class="d:none">수량</dt>
+	            <dd class="ml:auto"><a href="/basket/list" class="icon icon-basket_outline icon-color:base-0 icon-size:4 icon-text-with">1</a></dd>
+	        </dl>
+	    </section>
+    </main>    
+    
+
+</body>
+
+</html>

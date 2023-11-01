@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+	<link href="/css/components/admin/menu/menu.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/admin/menu/menu-filter.css" rel="stylesheet" type="text/css">	
+	<link href="/css/components/admin/menu/list.css" rel="stylesheet" type="text/css">
+	<script type="module" src="/js/lib/modal-panel.js" defer></script>
+	<script type="module" src="/js/admin/menu/list.js" defer></script>
+</head>
+
+<body>
+	<main layout:fragment="main">		
+        <section class="menu-filter-list">
+            <h1 class="d:none">메뉴 검색 목록</h1>
+            <div>
+                <section class="menu-filter">
+                    <h1>Rland Menu<span class="d:none">검색</span></h1>
+            
+                    <nav class="category-filter">
+                        <h1 class="d:none">카테고리 검색 메뉴 목록</h1>
+                        <ul>
+                            <li><a class="sm:deco current md:deco sm:icon-filter_list" href="">전체메뉴</a></li>
+                            <li><a class="d:none md:d:inline" href="">커피</a></li>
+                            <li><a class="d:none md:d:inline" href="">수제청</a></li>
+                            <li><a class="d:none md:d:inline" href="">샌드위치</a></li>
+                            <li><a class="d:none md:d:inline" href="">쿠키</a></li>
+                        </ul>
+                    </nav>
+                    <section class="query-filter">
+                        <h1 class="d:none">이름 검색 폼</h1>
+                        <form>
+                            <fieldset>
+                                <legend class="d:none">이름 검색</legend>
+                                <input type="text" placeholder="메뉴 검색">
+                                <button class="icon icon-find">검색</button>
+                            </fieldset>
+                        </form>
+                    </section>
+                </section>
+
+                <!-- ------------------------------------------------------ -->
+
+                <section class="menu-list">
+                    <h1 class="d:none">메뉴 목록</h1>
+                    <div class="content">
+                        
+                        <section class="menu menu-reg">
+	                        <!--<modal-panel aa="hehe" dir="rtl">-->
+	                            <form class="menu-layout" slot="modal-content" method="post" enctype="multipart/form-data">
+	                                <div class="h1">
+	                                    <input class="b:1 bs:dashed fs:-1" type="text" name="kor-name" placeholder="한글제목">
+	                                </div>
+	                                <div class="h2 heading-2 font-weight:normal color:base-5">
+	                                    <input class="b:1 bs:dashed fs:-1" type="text" name="eng-name" placeholder="영문제목">
+	                                </div>
+	                                <div class="price-block d:flex align-items:flex-end">
+										<input class="b:1 bs:dashed fs:-1 w:1/2 mr:1" name="price" type="text" placeholder="가격"> 원</div>
+	                                <div class="img-block bg-color:base-3">
+	                                    <label>
+											<input class="d:none" type="file" name="f" multiple>
+	                                    	<img alt="이미지선택" class="of:scale-down" src="/image/icon/image.svg">											
+										</label>
+	                                </div>
+	                                
+	                                <div class="pay-block d:flex">
+	                                    <button type="submit" class="btn-menu-reg icon icon-check_circle icon-color:main-1 color:base-0
+	                                                md:icon:none md:btn-color:main-1 md:btn-type:text" href="">등록</button>
+	                                    <a class="icon icon-cancel_circle icon-color:accent-1 color:base-0
+	                                                md:icon:none md:btn-color:base-6 md:btn-type:text" href="">취소</a>
+	                                </div>                            
+	                            </form>
+	                        <!--</modal-panel>-->
+                            <div class="empty">
+                                <button class="btn-menu-add icon icon-add_circle">추가</button>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail.html">카페라떼1</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href="detail.html?id=1"><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="btn-menu-del icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail.html?id=1">카페라떼2</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href="detail.html?id=1"><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            <div class="like-block d:flex justify-content:flex-end">
+                                
+                            </div>
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="btn-menu-del icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail.html?id=1">카페라떼3</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href="detail.html?id=1"><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail.html?id=1">카페라떼4</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href="detail.html?id=1"><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            <div class="like-block d:flex justify-content:flex-end">
+                                
+                            </div>
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail?id=1">카페라떼</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href=""><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            <div class="like-block d:flex justify-content:flex-end">
+                               
+                            </div>
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                        <section class="menu">
+                            <h1>
+                                <a class="heading-3" href="detail?id=1">카페라떼</a></h1>
+                            <h2 class="heading-2 font-weight:normal color:base-5">Cafe Latte</h2>
+                            <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold">4,500</span>원<span class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                            <div class="img-block">
+                                <a href=""><img src="/image/menu/8.jpg"></a>
+                            </div>
+                            <div class="like-block d:flex justify-content:flex-end">
+                                
+                            </div>
+                            <div class="pay-block d:flex">
+                                <a class="icon icon-pancel icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:main-3 btn-type:icon md:btn-type:text" href="">수정</a>
+                                <a class="icon icon-trash icon-color:base-1 color:base-0 
+                                            md:icon:none md:btn-color:accent-1 btn-type:icon md:btn-type:text" href="">삭제</a>
+                            </div>
+                        </section>
+
+                    </div>
+                </section>
+            </div>
+        </section>
+	</main>
+</body>
+
+</html>

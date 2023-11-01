@@ -1,0 +1,27 @@
+.heading-1{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size:8px;
+    color:var(--color-base-9);
+}
+
+.heading-2{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size:11px;
+    color:var(--color-base-9);
+}
+
+.heading-3{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size:14px;
+    color:var(--color-base-9);
+}
+
+.heading-4{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    color:var(--color-base-9);
+}

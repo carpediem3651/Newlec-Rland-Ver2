@@ -1,0 +1,35 @@
+
+.btn-main{
+    background-color: var(--color-main-3);
+    padding: 8px 20px;
+    border: 0;
+    color: var(--color-base-0);
+    font-weight: bold;
+    border-radius: var(--radius-3);
+}
+
+.btn-type\:icon{
+    --icon-size:var(--icon-size-1);
+    padding: 7px;
+    box-sizing: content-box;
+    border-radius: 50%;
+
+    width:var(--icon-size);
+    height:var(--icon-size);
+}
+
+.btn-disable{
+    background-color: var();
+}
+
+.btrn-reverse{
+
+}
+
+
+@media (min-width: 700px) {
+    .md\:btn-main{
+        border-radius: 0;
+    }
+}
+

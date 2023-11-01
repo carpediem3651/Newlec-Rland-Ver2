@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.rland.web.repository.MemberRoleRepository">
+ 
+ <select id="findViewAllByMemberId" resultType="MemberRoleView">
+ 	select * from member_role_view
+	where member_id = #{memberId}
+ </select> 
+ 
+  <insert id="save" parameterType="MemberRole">
+  	INSERT INTO member_role
+	(
+		member_id
+	)
+	VALUES
+	(
+		#{memberId}
+	)
+  </insert> 
+  
+  
+</mapper>

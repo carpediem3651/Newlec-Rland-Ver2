@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}">
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<main layout:fragment="main">
+		<section>
+			<h1>메뉴등록 폼</h1>
+			<form action="reg" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<legend>메뉴정보</legend>
+					<label>이미지<input type="file" name="img-file" class=""></label>					
+					<label>카테고리</label>
+					<select>
+						<option>커피</option>
+						<option>수제청</option>
+						<option>쿠키</option>
+					</select>
+					<label>한글이름</label>
+					<input type="text" name="kor-name" required>
+					<label>영문이름</label>
+					<input type="text" name="eng-name" required>					
+					<label>가격</label>
+					<input type="number" name="price">
+					<label>설명</label>
+					<input type="text" name="description">					
+				</fieldset>
+				<fieldset>
+					<legend>메뉴 Default 크기 옵션</legend>
+					<label><input type="radio" name="is-small" checked value="1">Small</label>
+					<label><input type="radio" name="is-small" value="0">Large</label>
+				</fieldset>		
+				<div>
+					<a href="list">취소</a>
+					<input type="submit" value="저장">
+				</div>		
+			</form>
+		</section>
+	</main>
+</body>
+
+</html>

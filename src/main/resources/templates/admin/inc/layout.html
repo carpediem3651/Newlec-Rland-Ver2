@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--<link href="/css/reset.css" rel="stylesheet" type="text/css">-->
+    <link href="/css/admin/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/components/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/components/footer.css" rel="stylesheet" type="text/css">    
+</head>
+<body>
+    <div th:replace="~{admin/inc/header::.header}"></div>
+    
+    <div th:replace="~{admin/inc/aside::.aside}"></div>
+    <div layout:fragment="main">
+		이 내용이 나오면 망한거임.
+	</div>
+	
+    <div th:replace="~{admin/inc/footer::.footer}"></div>
+</body>
+</html>

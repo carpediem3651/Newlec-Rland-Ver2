@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+	<main layout:fragment="main">		
+		<div th:with="qt=(${#numbers.formatInteger(param.inc,1)}?:0)+(${#numbers.formatInteger(param.qt,1)}?:1)">
+			<div>size: <span th:text="${param.size}"></span></div>
+			<div>temp: <span th:text="${param.temp}"></span></div>
+			<div>size==1: <span th:text="${#numbers.formatInteger(param.size,3)}==1"></span></div>
+			<div>size==2: <span th:text="${#numbers.formatInteger(param.size,3)}==2"></span></div>
+			<div>param.qt: <span th:text="${#numbers.formatDecimal(qt*4500,3,'COMMA',2,'POINT')}"></span>원</div>
+		</div>
+		<!--<section th:with="m=${menu}">
+			<h1 th:text="${m.korName}">카페라떼</h1>-->
+		<section th:object="${menu}">
+			<h1 th:text="*{korName}">카페라떼</h1>
+			<h2>Cafe Latte</h2>
+			<p>알랜드만의 로스팅 기법으로 볶은 원두를 사용하여 추출된 풍부한 에스프레소와 신선한 우유가 어우러진 대표 라떼</p>
+			<form>
+				<fieldset>
+					<legend>사이즈</legend>
+					<label><input type="radio" name="size" value="1" th:checked="${#numbers.formatInteger(param.size,1)}==1 or ${param.size}==null">Small</label>
+					<label><input type="radio" name="size" value="2" th:checked="${#numbers.formatInteger(param.size,1)}==2">Large</label>
+				</fieldset>
+				<fieldset>
+					<legend>온도</legend>
+					<label><input type="radio" name="temp" value="1" th:checked="${#numbers.formatInteger(param.temp,1)}==1">HOT</label>
+					<label><input type="radio" name="temp" value="2" th:checked="${#numbers.formatInteger(param.temp,1)}==2 or ${param.temp}==null">ICED</label>
+				</fieldset>
+				<fieldset 
+					th:with="qt=(${#numbers.formatInteger(param.inc,1)}?:0)+(${#numbers.formatInteger(param.qt,1)}?:1)">
+					<legend>수량</legend>
+					<input class="icon icon-minus" type="submit" name="inc" value="-1" 
+							th:disabled="${qt==1}">
+					<span th:text="${qt}">1</span>
+					<input type="hidden" name="qt" th:value="${qt}">
+					<input type="submit" name="inc" value="1">
+					<span><span th:text="${#numbers.formatInteger(qt*4500,3,'COMMA')}">4500</span>원</span>
+				</fieldset>
+				<div>
+					<input  type="submit" name="cmd" value="담기">
+					<input  type="submit" name="cmd" value="주문하기">
+				</div>
+			</form>
+		</section>
+		<div><a href="list">메뉴목록</a></div>
+	</main>
+</body>
+</html>
