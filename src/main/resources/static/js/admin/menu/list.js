@@ -92,17 +92,26 @@ menuList.onclick = function(e) {
 
 		let img = fileInput.files[0];
 
+				/* csrf 토큰 설정*/
+		let csrfToken = document.querySelector("#csrf").content;
+		let memberId = document.querySelector("#userid").content;
+
 		let formData = new FormData();
 		formData.append("korName", korName);
 		formData.append("engName", engName);
 		formData.append("price", price);
-		formData.append("img", img);
+		formData.append("memberId", memberId);
+		formData.append("imgFile", img);
 
 		let request = new XMLHttpRequest();
 		request.onload = () => {
 			console.log("done test");
 		};
+		
+		console.log(csrfToken);
 		request.open("POST", "/api/menus");
+		request.setRequestHeader("X-CSRF-TOKEN", csrfToken);
+		
 		request.send(formData);
 	}
 };

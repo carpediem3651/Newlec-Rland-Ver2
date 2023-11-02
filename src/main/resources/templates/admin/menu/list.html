@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{inc/layout.html}">
 
 <head>
+	<!-- js로 클라이언트를 관리하기 때문에 화면이 변하지 않는다. 그래서 유저 정보를 심어준다-->
+	<meta id="userid" name="userid" th:content="${#authentication.principal.id}">
+	<meta id="useremail" name="useremail" th:content="${#authentication.principal.email}">
+	<!-- 토큰 얻기 -->
+	<meta id="csrf" name="_csrf" th:content="${_csrf.token}">
 	<link href="/css/components/admin/menu/menu.css" rel="stylesheet" type="text/css">
 	<link href="/css/components/admin/menu/menu-filter.css" rel="stylesheet" type="text/css">	
 	<link href="/css/components/admin/menu/list.css" rel="stylesheet" type="text/css">

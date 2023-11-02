@@ -1,10 +1,10 @@
 package kr.co.rland.web.controller.api;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpServletRequest;
 import kr.co.rland.web.entity.Menu;
 import kr.co.rland.web.entity.MenuView;
 import kr.co.rland.web.service.MenuService;
@@ -55,11 +56,33 @@ public class MenuController {
 	
 	// 메뉴를 등록하는 API
 	@PostMapping
-	public Menu reg(Menu menu) {		
+	public Menu reg(
+			HttpServletRequest request,
+			Menu menu, MultipartFile imgFile) throws IllegalStateException, IOException {
+		
+		// 저장될 경로를 지정한다.
+		// 서블릿의 홈 디렉토리는 webapp
+		String strPath = request.getServletContext().getRealPath("/image/menu");
+		
+		// ------- 파일 디렉토리가 없다면, 디렉토리를 만들어준다. -------
+		File path = new File(strPath);
+		if(!path.exists())
+			path.mkdirs();
+		// ---------
+		
+		// ------------ imgFile을 file위치로 전송한다.---------
+		File file = new File(strPath+File.separator+imgFile.getOriginalFilename());
+		imgFile.transferTo(file);
+		System.out.println("file:"+file);
 		System.out.println(menu);
+		
+		//.setImg는 menu엔티티에 속성 값을 추가해주는 메서드다.
+		menu.setImg(imgFile.getOriginalFilename());
+		// db에 이미지 데이터 저장
 		Menu newOne = service.add(menu);
+		
 		System.out.println("============");
-		System.out.println(newOne);		
+		System.out.println(newOne);
 		return newOne;
 	}
 	
